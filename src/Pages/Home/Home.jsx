@@ -1,11 +1,18 @@
 
 import Navbar from '../../Components/Common/Header/Navbar';
+import Banner from './Banner/Banner';
+import FeaturedPlayers from './FeaturedPlayers/FeaturedPlayers';
+import Hero from './HeroSection/Hero';
+import LatestResult from './LatestResult/LatestResult';
 
 const Home = () => {
     return (
         <div>
-            <h1>Welcome to Ashir Par Football Club</h1>
             
+            <Banner></Banner>
+            <Hero></Hero>
+            <FeaturedPlayers></FeaturedPlayers>
+            <LatestResult></LatestResult>
         </div>
     );
 };
