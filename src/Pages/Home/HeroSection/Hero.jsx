@@ -1,9 +1,9 @@
-import React from "react";
+
 import hero1 from "../../../assets/HERO.jpg";
 const Hero = () => {
   return (
     <div>
-      <div className="hero bg-base-200 min-h-screen">
+      <div className="hero bg-base-200 py-12 ">
         <div className="hero-content flex-col lg:flex-row">
           <img
             src={hero1}

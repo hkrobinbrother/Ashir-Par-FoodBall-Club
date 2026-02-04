@@ -1,27 +1,29 @@
+import { Link } from "react-router";
 import afcpLogo from "../../../assets/apfc.png";
 
 const Navbar = () => {
   const nev = (
-    <>
+    <div className="flex font-bold text-white">
       <li className="flex bg-amber-300">
-        <a>Item 1</a>
+        <Link to="/">Home</Link>
         
       </li>
       <li>
-        <a href="">item 2</a>
+        <Link to="/players">Players</Link>
+         
       </li>
       <li>
-        <a href="">item 2</a>
+        <a href="">Matches</a>
       </li>
       <li>
-        <a href="">item 2</a>
+        <a href="">News</a>
       </li>
       
         
-    </>
+    </div>
   );
   return (
-    <div className="navbar  shadow-sm">
+    <div className="navbar  fixed z-10 bg-black/20 shadow-sm">
       <div className="container mx-auto flex">
         <div className="navbar-start ">
           <div className="dropdown">
