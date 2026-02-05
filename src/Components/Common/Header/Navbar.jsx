@@ -3,19 +3,19 @@ import afcpLogo from "../../../assets/apfc.png";
 
 const Navbar = () => {
   const nev = (
-    <div className="flex font-bold text-white">
-      <li className="flex bg-amber-300">
+    <div className="flex font-bold text-white ">
+      <li className="hover:bg-blue-400 rounded-lg">
         <Link to="/">Home</Link>
         
       </li>
-      <li>
+      <li className="hover:bg-blue-400 rounded-lg">
         <Link to="/players">Players</Link>
          
       </li>
-      <li>
+      <li className="hover:bg-blue-400 rounded-lg">
         <Link to="/matches">Matches</Link>
       </li>
-      <li>
+      <li className="hover:bg-blue-400 rounded-lg">
         <Link to="/news">News</Link>
       </li>
       
