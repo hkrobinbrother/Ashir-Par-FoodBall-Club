@@ -13,10 +13,10 @@ const Navbar = () => {
          
       </li>
       <li>
-        <a href="">Matches</a>
+        <Link to="/matches">Matches</Link>
       </li>
       <li>
-        <a href="">News</a>
+        <Link to="/news">News</Link>
       </li>
       
         

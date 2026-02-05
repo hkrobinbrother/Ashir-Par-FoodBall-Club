@@ -1,11 +1,9 @@
-const Players = () => {
+const News = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="container mx-auto py-20">
-        <h1 className="text-3xl font-bold text-center">
-          This is All Player List{" "}
-        </h1>
-        <div className="grid-cols-1 md:grid-cols-3 grid gap-4 mt-8">
+        <h1 className="text-3xl font-bold text-center">This is News Page</h1>
+        <div className="flex justify-between gap-4 mt-10">
           <div className="card bg-base-100 w-96 shadow-sm">
             <figure>
               <img
@@ -68,4 +66,4 @@ const Players = () => {
   );
 };
 
-export default Players;
+export default News;
