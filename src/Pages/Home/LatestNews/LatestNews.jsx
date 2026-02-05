@@ -6,11 +6,11 @@ const LatestNews = () => {
       <h1 className="text-2xl text-center mt-14 font-extrabold mb-6 text-red-500">
         Latest News
       </h1>
-      <div className="flex justify-between gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 mb-10">
         <div className="card bg-base-100 w-96 shadow-sm">
           <figure>
             <img
-              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+              src="https://i.ibb.co.com/Z178fNFv/pexels-jean-daniel-13022995.jpg"
               alt="Shoes"
             />
           </figure>

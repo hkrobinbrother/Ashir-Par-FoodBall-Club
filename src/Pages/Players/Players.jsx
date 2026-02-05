@@ -2,66 +2,27 @@ const Players = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="container mx-auto py-20">
-        <h1 className="text-3xl font-bold text-center">
-          This is All Player List{" "}
-        </h1>
+        <h1 className="text-3xl font-bold text-center">All Player List </h1>
         <div className="grid-cols-1 md:grid-cols-3 grid gap-4 mt-8">
-          <div className="card bg-base-100 w-96 shadow-sm">
-            <figure>
-              <img
-                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                alt="Shoes"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">Card Title</h2>
-              <p>
-                A card component has a figure, a body part, and inside body
-                there are title and actions parts
-              </p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
+          <div className="w-80 mx-auto">
+            {/* Card */}
+            <div className="card bg-base-100 shadow-md rounded-2xl overflow-hidden">
+              <figure>
+                <img
+                  src="https://i.ibb.co.com/Gv3TwW9c/pexels-omar-ramadan-1739260-26630669.jpg"
+                  alt="Player"
+                  className="w-full h-96 object-cover"
+                />
+              </figure>
+            </div>
+
+            {/* Text section */}
+            <div className="text-center mt-4">
+              <h1 className="text-lg font-bold uppercase">Benjamin Carter</h1>
+              <p className="text-gray-500">Head Coach</p>
             </div>
           </div>
-          {/* 2 */}
-          <div className="card bg-base-100 w-96 shadow-sm">
-            <figure>
-              <img
-                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                alt="Shoes"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">Card Title</h2>
-              <p>
-                A card component has a figure, a body part, and inside body
-                there are title and actions parts
-              </p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
-            </div>
-          </div>
-          {/* 3 */}
-          <div className="card bg-base-100 w-96 shadow-sm">
-            <figure>
-              <img
-                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                alt="Shoes"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">Card Title</h2>
-              <p>
-                A card component has a figure, a body part, and inside body
-                there are title and actions parts
-              </p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
-            </div>
-          </div>
+         
         </div>
       </div>
     </div>
