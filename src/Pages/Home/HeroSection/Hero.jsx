@@ -1,5 +1,6 @@
 import { useState } from "react";
-import hero1 from "../../../assets/HERO.jpg";
+import hero1 from "../../../../public/b2.png";
+
 
 const Hero = () => {
   const [showMore, setShowMore] = useState(false);

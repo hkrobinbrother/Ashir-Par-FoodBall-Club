@@ -6,11 +6,9 @@ const Navbar = () => {
     <div className="flex font-bold text-white ">
       <li className="hover:bg-blue-400 rounded-lg">
         <Link to="/">Home</Link>
-        
       </li>
       <li className="hover:bg-blue-400 rounded-lg">
         <Link to="/players">Players</Link>
-         
       </li>
       <li className="hover:bg-blue-400 rounded-lg">
         <Link to="/matches">Matches</Link>
@@ -18,8 +16,6 @@ const Navbar = () => {
       <li className="hover:bg-blue-400 rounded-lg">
         <Link to="/news">News</Link>
       </li>
-      
-        
     </div>
   );
   return (
@@ -46,17 +42,17 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm bg-black/20 dropdown-content  rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {nev}
             </ul>
           </div>
-          <img src={afcpLogo} alt="APFC Logo" className="h-12 w-12" />
+          <Link  to="/">
+            <img src={afcpLogo} alt="APFC Logo" className="h-12 w-12" />
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            {nev}
-          </ul>
+          <ul className="menu menu-horizontal px-1">{nev}</ul>
         </div>
         <div className="navbar-end">
           <a className="btn">Button</a>
