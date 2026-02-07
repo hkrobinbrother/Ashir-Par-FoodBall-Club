@@ -6,40 +6,35 @@ import img5 from "../../../../public/b5.png";
 
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 const Banner = () => {
-    return (
-        <div>
-            <div className="">
-        <Carousel
-          autoPlay={true}
-          interval={2000}
-          infiniteLoop={true}
-          showArrows={true}
-          showStatus={false}
-          showIndicators={true}
-          stopOnHover={false}
-          
-        >
-          <div  className="h-200" >
-            <img className="h-full w-full object-cover" src={img1} />
+  return (
+    <div className="w-full">
+      <Carousel
+        autoPlay
+        interval={2000}
+        infiniteLoop
+        showArrows
+        showStatus={false}
+        showIndicators
+        stopOnHover={false}
+        swipeable
+      >
+        {[img1, img2, img3, img4, img5].map((img, index) => (
+          <div
+            key={index}
+            className="h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px]"
+          >
+            <img
+              src={img}
+              alt={`slide-${index}`}
+              className="h-full w-full object-cover"
+            />
           </div>
-          <div  className="h-200" >
-            <img className="h-full w-full object-cover" src={img2} />
-          </div>
-          <div  className="h-200" >
-            <img className="h-full w-full object-cover" src={img3} />
-          </div>
-          <div  className="h-200" >
-            <img className="h-full w-full object-cover" src={img4} />
-          </div>
-          <div  className="h-200" >
-            <img className="h-full w-full object-cover" src={img5} />
-          </div>
-          
-        </Carousel>
-      </div>
-        </div>
-    );
+        ))}
+      </Carousel>
+    </div>
+  );
 };
 
 export default Banner;

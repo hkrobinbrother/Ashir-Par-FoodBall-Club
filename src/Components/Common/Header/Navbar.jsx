@@ -47,7 +47,7 @@ const Navbar = () => {
               {nev}
             </ul>
           </div>
-          <Link  to="/">
+          <Link to="/">
             <img src={afcpLogo} alt="APFC Logo" className="h-12 w-12" />
           </Link>
         </div>
@@ -55,7 +55,12 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{nev}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <Link
+            to="/login"
+            className="px-4 py-2 rounded-lg bg-blue-900 hover:bg-blue-600 transition font-semibold text-white"
+          >
+            Login
+          </Link>
         </div>
       </div>
     </div>
