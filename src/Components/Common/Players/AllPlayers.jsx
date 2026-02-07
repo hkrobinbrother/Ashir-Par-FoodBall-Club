@@ -2,7 +2,7 @@
 const AllPlayers = ({ player }) => {
   return (
     <div className="container mx-auto">
-      <div className="">
+      <div className="hover:scale-105 transition-transform duration-300">
         <div className="w-80 mx-auto">
           {/* Card */}
           <div className="card bg-base-100 shadow-md rounded-2xl overflow-hidden">

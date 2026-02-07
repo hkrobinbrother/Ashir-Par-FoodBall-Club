@@ -10,18 +10,18 @@ const LatestNews = () => {
         <div className="card bg-base-100 w-96 shadow-sm">
           <figure>
             <img
-              src="https://i.ibb.co.com/Z178fNFv/pexels-jean-daniel-13022995.jpg"
-              alt="Shoes"
+            className="w-[400px] h-[250px] object-cover"
+              src="https://i.ibb.co.com/Jw5XDYZy/Screenshot-2026-02-07-065642.png"
+              alt="Latest News Image 1"
             />
           </figure>
-          <div className="card-body">
-            <h2 className="card-title">Card Title</h2>
+          <div className="p-4">
+            <h2 className="text-2xl font-bold">Man of The Match</h2>
             <p>
-              A card component has a figure, a body part, and inside body there
-              are title and actions parts
+              Arman Hossin has been awarded the Man of the Match for his outstanding performance in the recent match against Ashir par  team. His exceptional skills and dedication on the field have earned him this prestigious recognition.
             </p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Buy Now</button>
+            <div className="mt-4">
+              <button className="btn btn-primary">View More</button>
             </div>
           </div>
         </div>
