@@ -1,50 +1,75 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const NextMatch = () => {
+  const [latestMatch, setLatestMatch] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BASE_URL}/nextmatch`)
+      .then((res) => {
+        const matches = res.data;
+
+        // ✅ ensure it's an array
+        if (Array.isArray(matches) && matches.length > 0) {
+          const sortedMatches = [...matches].sort(
+            (a, b) => new Date(b.date) - new Date(a.date),
+          );
+
+          setLatestMatch(sortedMatches[0]);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching match data:", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <p className="text-center mt-10">Loading...</p>;
+  }
+
+  if (!latestMatch) {
+    return <p className="text-center mt-10">No match found</p>;
+  }
+
   return (
     <div className="container mx-auto mt-14">
       <h1 className="text-2xl text-center font-extrabold mb-6 text-red-500">
         NEXT MATCH
       </h1>
-      <div>
-        <div className="max-w-4xl mx-auto bg-[#151a1e] text-white rounded-2xl px-6 py-4 shadow-lg">
-          {/* Top Row */}
-          <div className="flex justify-between items-center text-sm text-gray-400 mb-4">
-            <p>Tue, Mar 31</p>
-            <p className="flex items-center gap-1">
-              Asian Cup Qualification Playoff
-              <span className="text-red-500">🎯</span>
-            </p>
-          </div>
 
-          {/* Match Row */}
-          <div className="flex items-center justify-between">
-            {/* Singapore */}
-            <div className="flex items-center gap-3">
-              <p className="font-semibold">Singapore</p>
-              <img
-                src="https://flagcdn.com/w40/sg.png"
-                alt="Singapore"
-                className="w-8 h-6 rounded-sm"
-              />
-            </div>
+      <div className="bg-gray-900 text-white p-6 rounded-lg flex items-center justify-between">
+        {/* Team A */}
+        <div className="flex items-center gap-3">
+          <img
+            src={latestMatch.teamA.image}
+            alt={latestMatch.teamA.name}
+            className="w-12 h-12"
+          />
+          <h2 className="font-bold">{latestMatch.teamA.name}</h2>
+        </div>
 
-            {/* Time */}
-            <div className="text-center">
-              <p className="text-xl font-bold">4:00</p>
-              <p className="text-xs text-gray-400">PM</p>
-            </div>
+        {/* Match Info */}
+        <div className="text-center">
+          <p className="text-sm text-gray-400">{latestMatch.tournament}</p>
+          <p className="font-semibold">
+            {latestMatch.day}, {latestMatch.date}
+          </p>
+          <p className="text-red-400 font-bold">{latestMatch.time}</p>
+        </div>
 
-            {/* Bangladesh */}
-            <div className="flex items-center gap-3">
-              <img
-                src="https://flagcdn.com/w40/bd.png"
-                alt="Bangladesh"
-                className="w-8 h-6 rounded-sm"
-              />
-              <p className="font-semibold">Bangladesh</p>
-            </div>
-          </div>
+        {/* Team B */}
+        <div className="flex items-center gap-3">
+          <h2 className="font-bold">{latestMatch.teamB.name}</h2>
+          <img
+            src={latestMatch.teamB.image}
+            alt={latestMatch.teamB.name}
+            className="w-12 h-12"
+          />
         </div>
       </div>
     </div>

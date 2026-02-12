@@ -23,7 +23,7 @@ const Banner = () => {
         {[img1, img2, img3, img4, img5].map((img, index) => (
           <div
             key={index}
-            className="h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px]"
+            className="h-[200px] sm:h-[300px] md:h-[800px] lg:h-[800px]"
           >
             <img
               src={img}

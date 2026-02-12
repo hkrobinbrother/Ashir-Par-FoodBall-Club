@@ -4,10 +4,12 @@ import './index.css'
 
 import { RouterProvider } from "react-router/dom";
 import { router } from './Router/Router.jsx';
+import { MatchesProvider } from './Context/Matches.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    
-    <RouterProvider router={router} />,
+    <MatchesProvider>
+      <RouterProvider router={router} />
+    </MatchesProvider>
   </StrictMode>,
 )
