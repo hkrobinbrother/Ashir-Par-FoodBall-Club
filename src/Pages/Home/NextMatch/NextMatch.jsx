@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import LoadingSpinner from "../../../Components/Sheared/LoadingSpinner";
 
 const NextMatch = () => {
   const [latestMatch, setLatestMatch] = useState(null);
@@ -29,7 +30,7 @@ const NextMatch = () => {
   }, []);
 
   if (loading) {
-    return <p className="text-center mt-10">Loading...</p>;
+    return <LoadingSpinner smallHeight={true} />;
   }
 
   if (!latestMatch) {
