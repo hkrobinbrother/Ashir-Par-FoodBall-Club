@@ -55,6 +55,13 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{nev}</ul>
         </div>
         <div className="navbar-end">
+          <Link to="/dashboard">
+            <button className="px-4 py-2 rounded-lg bg-blue-900 hover:bg-blue-600 transition font-semibold text-white">
+              Dashboard
+            </button>
+          </Link>
+        </div>
+        <div className="navbar-end">
           <Link
             to="/login"
             className="px-4 py-2 rounded-lg bg-blue-900 hover:bg-blue-600 transition font-semibold text-white"
