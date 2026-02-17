@@ -6,36 +6,39 @@ import Matches from "../Pages/Matches/Matches";
 import News from "../Pages/News/News";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import DashboardLayOut from "../LayOut/DashboardLayOut";
+import NextMatchInput from "../Components/Dashboard/NextMatchInput";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element:<MainLayOut></MainLayOut> ,
+    element: <MainLayOut></MainLayOut>,
     children: [
-       { path: '/',
-        element:<Home></Home>
-    },
-    {
-      path:'/players',
-      element:<Players></Players>
-    },
-    {
-      path:'/matches',
-      element:<Matches></Matches>
-    },
-    {
-      path:'/news',
-      element:<News ></News>
-    }
+      { path: "/", element: <Home></Home> },
+      {
+        path: "/players",
+        element: <Players></Players>,
+      },
+      {
+        path: "/matches",
+        element: <Matches></Matches>,
+      },
+      {
+        path: "/news",
+        element: <News></News>,
+      },
     ],
   },
   {
-    path:'/dashboard',
-    element:<DashboardLayOut></DashboardLayOut>,
-    children:[
+    path: "/dashboard",
+    element: <DashboardLayOut></DashboardLayOut>,
+    children: [
       {
-        index:true,
-        element:<Dashboard></Dashboard>
-      }
-    ]
-  }
+        index: true,
+        element: (<Dashboard></Dashboard>),
+      },
+      {
+        path: "next-match",
+        element: <NextMatchInput></NextMatchInput>,
+      },
+    ],
+  },
 ]);
