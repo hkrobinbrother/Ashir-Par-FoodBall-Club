@@ -9,6 +9,9 @@ const DashboardLayOut = () => {
             <div className='relative min-h-screen md:flex bg-white'>
                 <div className='p-5'>
                     <Outlet/>
+                    <h1>
+                        
+                    </h1>
                 </div>
             </div>
         </div>

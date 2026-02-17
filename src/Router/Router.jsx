@@ -5,6 +5,7 @@ import Players from "../Pages/Players/Players";
 import Matches from "../Pages/Matches/Matches";
 import News from "../Pages/News/News";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import DashboardLayOut from "../LayOut/DashboardLayOut";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -29,10 +30,11 @@ export const router = createBrowserRouter([
   },
   {
     path:'/dashboard',
-    element:<Dashboard></Dashboard>,
+    element:<DashboardLayOut></DashboardLayOut>,
     children:[
       {
-        
+        index:true,
+        element:<Dashboard></Dashboard>
       }
     ]
   }
