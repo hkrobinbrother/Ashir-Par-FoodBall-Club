@@ -1,61 +1,54 @@
 import React, { useState } from "react";
-
 import logo from "../../assets/apfc.png";
-import { GrLogout } from "react-icons/gr";
 import { Link } from "react-router";
-
-// import MenuItem from "../../Components/MenuItem";
+import { GrMenu } from "react-icons/gr";
 
 const Sidebar = () => {
-  //  const { logOut } = useAuth()
-  const [isActive, setActive] = useState(false);
-  //   const [role,isLoading] = useRole()
-
-  // Sidebar Responsive Handler
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div
-      className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-orange-200 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
-        isActive && "-translate-x-full"
-      }  md:translate-x-0  transition duration-200 ease-in-out`}
-    >
-      <div>
-        <div>
-          <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-orange-100    mx-auto">
-            <Link to="/" className="flex items-center">
-              <img
-                // className='hidden md:block'
-                src={logo}
-                className="w-10 h-10"
-                alt="logo"
-                width="100"
-                height="100"
-              />
-              <h1 className='font-["Pacifico",cursive] ml-2'>
-                {" "}
-                Ashir Par <br /> FoodBall Club
-              </h1>
-            </Link>
-          </div>
+    <>
+      {/* Mobile Toggle Button */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="md:hidden fixed top-4 left-4 z-50 bg-orange-400 p-2 rounded"
+      >
+        <GrMenu />
+      </button>
+
+      <div
+        className={`fixed flex flex-col  bg-orange-200  h-full px-4 py-6 transition-transform duration-300 ease-in-out
+        ${isOpen ? "translate-x-0" : "-translate-x-full"}
+        md:translate-x-0`}
+      >
+        {/* Logo */}
+        <div className="flex items-center justify-center bg-orange-100 p-3 rounded-lg shadow">
+          <Link to="/" className="flex items-center">
+            <img src={logo} className="w-10 h-10" alt="logo" />
+            <h1 className='font-["Pacifico",cursive] ml-2'>
+              Ashir Par <br /> Football Club
+            </h1>
+          </Link>
         </div>
 
-        {/* Nav Items */}
-        <div className="flex flex-col justify-between flex-1 mt-6">
-          <nav>
-            {/*  Menu Items */}
-            <h1>hello</h1>
-            <Link to="/dashboard/latest-result" className="block px-4 py-2 text-sm font-medium text-gray-700 rounded-lg hover:bg-orange-100">Latest Result Update</Link>
+        {/* Nav Links */}
+        <nav className="mt-8 space-y-2">
+          <Link
+            to="/dashboard/latest-result"
+            className="block px-4 py-2 bg-blue-50 rounded-lg hover:bg-orange-300 transition"
+          >
+            Latest Result Update
+          </Link>
 
-            <Link
-              to="/dashboard/next-match"
-              className="block px-4 py-2 text-sm font-medium text-gray-700 rounded-lg hover:bg-orange-100"
-            >
-              Next Match Update
-            </Link>
-          </nav>
-        </div>
+          <Link
+            to="/dashboard/next-match"
+            className="block px-4 py-2 bg-blue-50 rounded-lg hover:bg-orange-300 transition"
+          >
+            Next Match Update
+          </Link>
+        </nav>
       </div>
-    </div>
+    </>
   );
 };
 

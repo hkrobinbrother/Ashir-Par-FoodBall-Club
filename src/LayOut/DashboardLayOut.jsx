@@ -4,13 +4,16 @@ import { Outlet } from 'react-router';
 
 const DashboardLayOut = () => {
     return (
-        <div className='relative min-h-screen md:flex bg-white'>
-            <Sidebar/>
-            <div className='relative min-h-screen ml-68 md:flex bg-white'>
-                <div className='p-5'>
+        <div className=' md:flex bg-gray-100 min-h-screen'>
+            
+           <div>
+             <Sidebar/>
+           </div>
+            <div className=' md:flex ml-62 bg-gray-100 min-h-screen flex-1 p-4'>
+               
                     <Outlet/>
                     
-                </div>
+                
             </div>
         </div>
     );
