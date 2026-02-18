@@ -22,8 +22,7 @@ const NextMatchInput = () => {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {/* Match Name */}
-        <div>
+        <div className="">
           <label htmlFor="matchName">Match Name:</label>
           <input
             id="matchName"
@@ -32,7 +31,6 @@ const NextMatchInput = () => {
           {errors.matchName && <p>{errors.matchName.message}</p>}
         </div>
 
-        {/* Date */}
         <div>
           <label htmlFor="date">Date:</label>
           <input
@@ -52,7 +50,6 @@ const NextMatchInput = () => {
           {errors.time && <p>{errors.time.message}</p>}
         </div>
 
-        {/* Team 1 */}
         <h3>Team 1</h3>
         <div>
           <label htmlFor="team1Name">Team Name:</label>
@@ -72,7 +69,6 @@ const NextMatchInput = () => {
           {errors.team1Flag && <p>{errors.team1Flag.message}</p>}
         </div>
 
-        {/* Team 2 */}
         <h3>Team 2</h3>
         <div>
           <label htmlFor="team2Name">Team Name:</label>
@@ -92,9 +88,12 @@ const NextMatchInput = () => {
           {errors.team2Flag && <p>{errors.team2Flag.message}</p>}
         </div>
 
-        {/* Submit */}
         <button type="submit">Submit Match</button>
       </form>
+
+      {/* <h1>
+        <a>View All Matches Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id pariatur amet tempore, exercitationem error in. Corporis illum, at molestiae ipsam maiores soluta mollitia totam reprehenderit dignissimos exercitationem nihil, eius dolor!</a>
+      </h1> */}
     </div>
   );
 };

@@ -7,6 +7,7 @@ import News from "../Pages/News/News";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import DashboardLayOut from "../LayOut/DashboardLayOut";
 import NextMatchInput from "../Components/Dashboard/NextMatchInput";
+import LatestResultInput from "../Components/Dashboard/LatestResultInput";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: "next-match",
         element: <NextMatchInput></NextMatchInput>,
+      },
+      {
+        path: "latest-result",
+        element: <LatestResultInput></LatestResultInput>,
       },
     ],
   },

@@ -4,7 +4,6 @@ import logo from "../../assets/apfc.png";
 import { GrLogout } from "react-icons/gr";
 import { Link } from "react-router";
 
-
 // import MenuItem from "../../Components/MenuItem";
 
 const Sidebar = () => {
@@ -32,7 +31,10 @@ const Sidebar = () => {
                 width="100"
                 height="100"
               />
-              <h1 className='font-["Pacifico",cursive] ml-2'> Ashir Par <br /> FoodBall Club</h1>
+              <h1 className='font-["Pacifico",cursive] ml-2'>
+                {" "}
+                Ashir Par <br /> FoodBall Club
+              </h1>
             </Link>
           </div>
         </div>
@@ -42,14 +44,17 @@ const Sidebar = () => {
           <nav>
             {/*  Menu Items */}
             <h1>hello</h1>
-            <h1>Latest Result Update</h1>
-            <Link to="/dashboard/next-match" 
-            className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100">Next Match Update</Link>
+            <Link to="/dashboard/latest-result" className="block px-4 py-2 text-sm font-medium text-gray-700 rounded-lg hover:bg-orange-100">Latest Result Update</Link>
+
+            <Link
+              to="/dashboard/next-match"
+              className="block px-4 py-2 text-sm font-medium text-gray-700 rounded-lg hover:bg-orange-100"
+            >
+              Next Match Update
+            </Link>
           </nav>
         </div>
       </div>
-
-
     </div>
   );
 };
