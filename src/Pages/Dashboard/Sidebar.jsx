@@ -8,7 +8,7 @@ const Sidebar = () => {
 
   return (
     <>
-      {/* Mobile Toggle Button */}
+      {/* Menu Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="md:hidden fixed top-4 left-4 z-50 bg-orange-400 p-2 rounded"
@@ -16,8 +16,10 @@ const Sidebar = () => {
         <GrMenu />
       </button>
 
+      {/* Sidebar */}
       <div
-        className={`fixed flex flex-col  bg-orange-200  h-full px-4 py-6 transition-transform duration-300 ease-in-out
+        className={`fixed top-0 left-0 w-64 h-full bg-orange-200 px-4 py-6
+        transform transition-transform duration-300 ease-in-out z-40
         ${isOpen ? "translate-x-0" : "-translate-x-full"}
         md:translate-x-0`}
       >
@@ -31,10 +33,11 @@ const Sidebar = () => {
           </Link>
         </div>
 
-        {/* Nav Links */}
+        {/* Nav */}
         <nav className="mt-8 space-y-2">
           <Link
             to="/dashboard/latest-result"
+            onClick={() => setIsOpen(false)}
             className="block px-4 py-2 bg-blue-50 rounded-lg hover:bg-orange-300 transition"
           >
             Latest Result Update
@@ -42,6 +45,7 @@ const Sidebar = () => {
 
           <Link
             to="/dashboard/next-match"
+            onClick={() => setIsOpen(false)}
             className="block px-4 py-2 bg-blue-50 rounded-lg hover:bg-orange-300 transition"
           >
             Next Match Update

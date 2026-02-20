@@ -26,7 +26,9 @@ const NextMatchInput = () => {
  return (
   <div className="w-full px-4 md:px-10 lg:px-20 mt-10">
     <div className="w-full bg-white rounded-2xl shadow-xl border border-gray-200 p-6 md:p-10">
-      
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+          Next Match Input
+        </h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
 
         {/* Match Info Section */}

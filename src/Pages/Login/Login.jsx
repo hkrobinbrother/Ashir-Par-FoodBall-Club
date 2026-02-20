@@ -1,150 +1,88 @@
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
-import { FcGoogle } from 'react-icons/fc'
-
-import toast from 'react-hot-toast'
-import { TbFidgetSpinner } from 'react-icons/tb'
-
-import { saveUser } from '../../Api/utils'
-
-import useAuth from '../../Hook/useAuth'
-import LoadingSpinner from '../../Components/Sheared/LoadingSpinner'
+import React from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router";
+import useAuth from "../../Hook/useAuth";
 
 const Login = () => {
-  const { signIn, signInWithGoogle, loading, user } = useAuth()
-  const navigate = useNavigate()
-  const location = useLocation()
-  const from = location?.state?.from?.pathname || '/'
-  if (loading) return <LoadingSpinner />
-  if (user) return <Navigate to={from} replace={true} />
-  // form submit handler
-  const handleSubmit = async event => {
-    event.preventDefault()
-    const form = event.target
-    const email = form.email.value
-    const password = form.password.value
+  const { signIn } = useAuth();   // ✅ correct way
+  const navigate = useNavigate();
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = async (data) => {
     try {
-      //User Login
+      await signIn(data.email, data.password);
 
-     await signIn(email, password)
-    
+      toast.success("Login Successful ✅");
 
-      navigate(from, { replace: true })
-      toast.success('Login Successful')
-    } catch (err) {
-      console.log(err)
-      toast.error(err?.message)
+      navigate("/dashboard"); // ✅ redirect after login
+    } catch (error) {
+      toast.error(error.message);
     }
-  }
+  };
 
-  // Handle Google Signin
-  const handleGoogleSignIn = async () => {
-    try {
-      //User Registration using google
-      const data =await signInWithGoogle()
-      //  save user info in db is user is new
-     await saveUser(data?.user)
-      navigate(from, { replace: true })
-      toast.success('Login Successful')
-    } catch (err) {
-      console.log(err)
-      toast.error(err?.message)
-    }
-  }
   return (
-    <div className='flex justify-center items-center min-h-screen bg-white'>
-      <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
-        <div className='mb-8 text-center'>
-          <h1 className='my-3 text-4xl font-bold'>Log In</h1>
-          <p className='text-sm text-gray-400'>
-            Sign in to access your account
-          </p>
-        </div>
-        <form
-          onSubmit={handleSubmit}
-          noValidate=''
-          action=''
-          className='space-y-6 ng-untouched ng-pristine ng-valid'
-        >
-          <div className='space-y-4'>
-            <div>
-              <label htmlFor='email' className='block mb-2 text-sm'>
-                Email address
-              </label>
-              <input
-                type='email'
-                name='email'
-                id='email'
-                required
-                placeholder='Enter Your Email Here'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900'
-                data-temp-mail-org='0'
-              />
-            </div>
-            <div>
-              <div className='flex justify-between'>
-                <label htmlFor='password' className='text-sm mb-2'>
-                  Password
-                </label>
-              </div>
-              <input
-                type='password'
-                name='password'
-                autoComplete='current-password'
-                id='password'
-                required
-                placeholder='*******'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900'
-              />
-            </div>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      
+      <div className="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
+        <h2 className="text-2xl font-bold text-center mb-6">
+          Admin Login
+        </h2>
+
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          
+          <div>
+            <label className="block mb-1 font-medium">Email</label>
+            <input
+              type="email"
+              className="w-full px-4 py-2 border rounded-lg"
+              {...register("email", { required: "Email is required" })}
+            />
+            {errors.email && (
+              <p className="text-red-500 text-sm">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
           <div>
-            <button
-              type='submit'
-              className='bg-lime-500 w-full rounded-md py-3 text-white'
-            >
-              {loading ? (
-                <TbFidgetSpinner className='animate-spin m-auto' />
-              ) : (
-                'Continue'
-              )}
-            </button>
+            <label className="block mb-1 font-medium">Password</label>
+            <input
+              type="password"
+              className="w-full px-4 py-2 border rounded-lg"
+              {...register("password", {
+                required: "Password is required",
+              })}
+            />
+            {errors.password && (
+              <p className="text-red-500 text-sm">
+                {errors.password.message}
+              </p>
+            )}
           </div>
-        </form>
-        <div className='space-y-1'>
-          <button className='text-xs hover:underline hover:text-lime-500 text-gray-400'>
-            Forgot password?
-          </button>
-        </div>
-        <div className='flex items-center pt-4 space-x-1'>
-          <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
-          <p className='px-3 text-sm dark:text-gray-400'>
-            Login with social accounts
-          </p>
-          <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
-        </div>
-        <div
-          onClick={handleGoogleSignIn}
-          className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'
-        >
-          <FcGoogle size={32} />
 
-          <p>Continue with Google</p>
-        </div>
-        <p className='px-6 text-sm text-center text-gray-400'>
-          Don&apos;t have an account yet?{' '}
-          <Link
-            to='/signup'
-            className='hover:underline hover:text-lime-500 text-gray-600'
+          <button
+            type="submit"
+            className="w-full bg-orange-400 text-white py-2 rounded-lg"
           >
-            Sign up
+            Login
+          </button>
+
+        </form>
+        <div>
+          <h1 className="text-center mt-4 text-red-500">If You Don't Have An Account, Please Contact The Admin OR Register</h1>
+          <Link to="/register" className="text-center mt-2 text-blue-500 hover:underline block">
+            Register Here
           </Link>
-          .
-        </p>
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
