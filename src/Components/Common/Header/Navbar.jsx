@@ -1,7 +1,14 @@
 import { Link } from "react-router";
 import afcpLogo from "../../../assets/apfc.png";
+import useAuth from "../../../Hook/useAuth";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+
+  const handleLogout = async () => {
+    await logOut();
+  };
+
   const nev = (
     <div className="flex font-bold text-white ">
       <li className="hover:bg-blue-400 rounded-lg">
@@ -18,10 +25,13 @@ const Navbar = () => {
       </li>
     </div>
   );
+
   return (
     <div className="navbar  fixed z-10 bg-black/20 shadow-sm">
-      <div className="container mx-auto flex 
-      ">
+      <div
+        className="container mx-auto flex 
+      "
+      >
         <div className="navbar-start ">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -55,20 +65,30 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{nev}</ul>
         </div>
-        <div className="navbar-end">
-          <Link to="/dashboard">
-            <button className="px-4 py-2 rounded-lg bg-blue-900 hover:bg-blue-600 transition font-semibold text-white">
-              Dashboard
-            </button>
-          </Link>
-        </div>
-        <div className="navbar-end">
-          <Link
-            to="/login"
-            className="px-4 py-2 rounded-lg bg-blue-900 hover:bg-blue-600 transition font-semibold text-white"
-          >
-            Login
-          </Link>
+        <div className="navbar-end gap-3">
+          {user ? (
+            <>
+              <Link to="/dashboard">
+                <button className="px-4 py-2 rounded-lg bg-blue-900 hover:bg-blue-600 transition font-semibold text-white">
+                  Dashboard
+                </button>
+              </Link>
+
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-500 transition font-semibold text-white"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link
+              to="/login"
+              className="px-4 py-2 rounded-lg bg-blue-900 hover:bg-blue-600 transition font-semibold text-white"
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>

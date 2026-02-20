@@ -16,16 +16,13 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const { name, email, password, confirmPassword, photoURL } = data;
+    const { name, email, password,  photoURL } = data;
 
-    if (password !== confirmPassword) {
-      toast.error("Passwords do not match!");
-      return;
-    }
+    
 
     try {
       // 1️⃣ Create Firebase User
-      const result = await createUser(email, password);
+      await createUser(email, password);
 
       // 2️⃣ Update profile
       await updateUserProfile(name, photoURL);
