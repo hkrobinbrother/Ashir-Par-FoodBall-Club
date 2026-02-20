@@ -9,6 +9,7 @@ import DashboardLayOut from "../LayOut/DashboardLayOut";
 import NextMatchInput from "../Components/Dashboard/NextMatchInput";
 import LatestResultInput from "../Components/Dashboard/LatestResultInput";
 import Login from "../Pages/Login/Login";
+import Register from "../Pages/Register/Register";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -30,6 +31,7 @@ export const router = createBrowserRouter([
     ],
   },
   {path: "/login", element: <Login></Login>},
+  {path: "/register", element: <Register></Register>},
   {
     path: "/dashboard",
     element: <DashboardLayOut></DashboardLayOut>,
