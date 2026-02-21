@@ -10,6 +10,7 @@ import NextMatchInput from "../Components/Dashboard/NextMatchInput";
 import LatestResultInput from "../Components/Dashboard/LatestResultInput";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import NewsInput from "../Components/Dashboard/NewsInput";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -47,6 +48,10 @@ export const router = createBrowserRouter([
       {
         path: "latest-result",
         element: <LatestResultInput></LatestResultInput>,
+      },
+      {
+        path: "news",
+        element: <NewsInput></NewsInput>,
       },
     ],
   },

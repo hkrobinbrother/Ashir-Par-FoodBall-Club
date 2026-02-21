@@ -1,69 +1,58 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 const News = () => {
+  const [news, setNews] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BASE_URL}/news`)
+      .then((res) => {
+        setNews(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gray-100">
-      <div className="container mx-auto py-20">
-        <h1 className="text-3xl font-bold text-center">This is News Page</h1>
-        <div className="flex justify-between gap-4 mt-10">
-          <div className="card bg-base-100 w-96 shadow-sm">
-            <figure>
+    <div className="min-h-screen bg-gradient-to-br from-orange-900 via-black to-green-800">
+      <div className="container mx-auto py-20 px-4">
+        <h1 className="text-3xl font-bold text-center text-white mb-10">
+          📰 Latest Football News
+        </h1>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {news.map((item) => (
+            <div
+              key={item._id}
+              className="bg-white/10 backdrop-blur-md border border-green-500/30 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition duration-300"
+            >
               <img
-                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                alt="Shoes"
+                src={item.image}
+                alt={item.title}
+                className="w-full h-52 object-cover"
               />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">Card Title</h2>
-              <p>
-                A card component has a figure, a body part, and inside body
-                there are title and actions parts
-              </p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
+
+              <div className="p-5 text-white">
+                <h2 className="text-xl font-bold text-green-400 mb-2">
+                  {item.title}
+                </h2>
+
+                <p className="text-sm text-gray-300">
+                  {item.description.slice(0, 120)}...
+                </p>
+
+                <button className="mt-4 bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg text-sm font-semibold">
+                  Read More
+                </button>
               </div>
             </div>
-          </div>
-          {/* 2 */}
-          <div className="card bg-base-100 w-96 shadow-sm">
-            <figure>
-              <img
-                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                alt="Shoes"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">Card Title</h2>
-              <p>
-                A card component has a figure, a body part, and inside body
-                there are title and actions parts
-              </p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
-            </div>
-          </div>
-          {/* 3 */}
-          <div className="card bg-base-100 w-96 shadow-sm">
-            <figure>
-              <img
-                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                alt="Shoes"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">Card Title</h2>
-              <p>
-                A card component has a figure, a body part, and inside body
-                there are title and actions parts
-              </p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
   );
 };
 
-export default News;
+export default News;  

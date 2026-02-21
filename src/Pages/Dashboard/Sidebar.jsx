@@ -50,6 +50,13 @@ const Sidebar = () => {
           >
             Next Match Update
           </Link>
+          <Link
+            to="/dashboard/news"
+            onClick={() => setIsOpen(false)}
+            className="block px-4 py-2 bg-blue-50 rounded-lg hover:bg-orange-300 transition"
+          >
+            News Update
+          </Link>
         </nav>
       </div>
     </>

@@ -12,7 +12,7 @@ const Hero = () => {
 
   return (
     <div>
-      <div className="hero bg-base-200 py-12">
+      <div className="hero  bg-gradient-to-br from-green-900 via-black to-green-800 py-12">
         <div className="hero-content flex-col lg:flex-row">
           <img
             src={hero1}
@@ -24,7 +24,7 @@ const Hero = () => {
               Ashir Par Football Club
             </h1>
 
-            <p className="py-6">
+            <p className="py-6 text-white text-lg">
               {showMore ? fullText : shortText}
               {!showMore && "..."}
             </p>
