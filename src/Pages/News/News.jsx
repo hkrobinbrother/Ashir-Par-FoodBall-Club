@@ -6,7 +6,7 @@ const News = () => {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BASE_URL}/news`)
+      .get(`${import.meta.env.VITE_BASE_URL}/news?category=news`)
       .then((res) => {
         setNews(res.data);
       })

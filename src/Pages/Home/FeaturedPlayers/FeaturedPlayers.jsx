@@ -7,7 +7,7 @@ const FeaturedPlayers = () => {
          <h1 className="text-3xl font-bold text-red-500">Featured Players</h1>
        </div>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
-        <div className="card card-side bg-base-100 shadow-sm">
+        <div className="card card-side bg-gradient-to-br from-orange-900 via-black to-blue-800 shadow-sm text-white hover:scale-105 transition duration-300">
           <figure className="w-1/3">
             <img
             className="max-w-62"
@@ -23,7 +23,7 @@ const FeaturedPlayers = () => {
           </div>
          
         </div>
-        <div className="card card-side bg-base-100 shadow-sm">
+        <div className="card card-side bg-gradient-to-br from-orange-900 via-black to-blue-800 shadow-sm text-white hover:scale-105 transition duration-300">
           <figure className="w-1/3">
             <img
             className="max-w-62"
@@ -38,7 +38,7 @@ const FeaturedPlayers = () => {
             
           </div>
         </div>
-        <div className="card card-side bg-base-100 shadow-sm">
+        <div className="card card-side bg-gradient-to-br from-orange-900 via-black to-blue-800  text-white hover:scale-105 transition duration-300 shadow-sm">
           <figure className="w-1/3">
             <img
             className="max-w-62"

@@ -1,67 +1,53 @@
 import React from "react";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
 const LatestNews = () => {
+  const [news, setNews] = useState([]);
+  
+    useEffect(() => {
+      axios
+        .get(`${import.meta.env.VITE_BASE_URL}/news?category=news`)
+        .then((res) => {
+          setNews(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, []);
   return (
-    <div className="container mx-auto">
-      <h1 className="text-2xl text-center mt-14 font-extrabold mb-6 text-red-500">
-        Latest News
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 mb-10">
-        <div className="card bg-base-100 w-96 shadow-sm">
-          <figure>
-            <img
-            className="w-[400px] h-[250px] object-cover"
-              src="https://i.ibb.co.com/Jw5XDYZy/Screenshot-2026-02-07-065642.png"
-              alt="Latest News Image 1"
-            />
-          </figure>
-          <div className="p-4">
-            <h2 className="text-2xl font-bold">Man of The Match</h2>
-            <p>
-              Arman Hossin has been awarded the Man of the Match for his outstanding performance in the recent match against Ashir par  team. His exceptional skills and dedication on the field have earned him this prestigious recognition.
-            </p>
-            <div className="mt-4">
-              <button className="btn btn-primary">View More</button>
+     <div className="">
+      <div className="container mx-auto py-20 px-4">
+        <h1 className="text-3xl font-bold text-center text-white mb-10">
+          📰 Latest News
+        </h1>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {news.map((item) => (
+            <div
+              key={item._id}
+              className="bg-white/10 backdrop-blur-md border border-green-500/30 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition duration-300"
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-52 object-cover"
+              />
+
+              <div className="p-5 text-white">
+                <h2 className="text-xl font-bold text-green-400 mb-2">
+                  {item.title}
+                </h2>
+
+                <p className="text-sm text-gray-300">
+                  {item.description.slice(0, 120)}...
+                </p>
+
+                <button className="mt-4 bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg text-sm font-semibold">
+                  Read More
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
-        {/* 2 */}
-        <div className="card bg-base-100 w-96 shadow-sm">
-          <figure>
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-              alt="Shoes"
-            />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">Card Title</h2>
-            <p>
-              A card component has a figure, a body part, and inside body there
-              are title and actions parts
-            </p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
-        {/* 3 */}
-        <div className="card bg-base-100 w-96 shadow-sm">
-          <figure>
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-              alt="Shoes"
-            />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">Card Title</h2>
-            <p>
-              A card component has a figure, a body part, and inside body there
-              are title and actions parts
-            </p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
