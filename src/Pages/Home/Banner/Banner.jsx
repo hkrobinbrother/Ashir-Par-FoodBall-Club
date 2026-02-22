@@ -9,10 +9,10 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Banner = () => {
   return (
-    <div className="w-full">
+     <div className="w-full">
       <Carousel
         autoPlay
-        interval={2000}
+        interval={3000}
         infiniteLoop
         showArrows
         showStatus={false}
@@ -23,13 +23,30 @@ const Banner = () => {
         {[img1, img2, img3, img4, img5].map((img, index) => (
           <div
             key={index}
-            className="h-[200px] sm:h-[300px] md:h-[800px] lg:h-[800px]"
+            className="relative h-[300px] sm:h-[400px] md:h-[600px] lg:h-[700px]"
           >
+            {/* Image */}
             <img
               src={img}
               alt={`slide-${index}`}
               className="h-full w-full object-cover"
             />
+
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
+
+            {/* Content */}
+            <div className="absolute inset-0 flex flex-col justify-center items-start px-6 md:px-20 text-white">
+              <h2 className="text-2xl md:text-5xl font-bold mb-4">
+                Welcome to Ashir Par Football Club
+              </h2>
+              <p className="text-sm md:text-lg mb-6 max-w-xl">
+                Experience the thrill of the game and support your favorite team.
+              </p>
+              <button className="bg-green-600 hover:bg-green-500 px-6 py-2 rounded-lg font-semibold transition">
+                Explore Now
+              </button>
+            </div>
           </div>
         ))}
       </Carousel>

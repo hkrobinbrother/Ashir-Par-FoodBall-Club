@@ -2,7 +2,7 @@ import React from "react";
 
 const FeaturedPlayers = () => {
   return (
-    <div className="container mx-auto mt-6">
+    <div className="px-4 md:container mx-auto mt-6">
        <div className="flex justify-center mb-8">
          <h1 className="text-3xl font-bold text-red-500">Featured Players</h1>
        </div>

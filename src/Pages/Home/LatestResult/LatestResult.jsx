@@ -17,7 +17,7 @@ const LatestResult = () => {
   if (!score) return <p className="text-center mt-6">No matches found</p>;
 
   return (
-    <div className="container mx-auto mt-14">
+    <div className="text-smn px-2 md:container mx-auto mt-14  ">
       <h1 className="text-2xl text-center font-extrabold mb-6 text-red-500">
         Latest Result
       </h1>
