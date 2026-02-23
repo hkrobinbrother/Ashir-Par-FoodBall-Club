@@ -1,25 +1,26 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router"; // use react-router-dom for Link
-
-const News = () => {
-  const [news, setNews] = useState([]);
+const FanMessageForClub = () => {
+       const [news, setNews] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BASE_URL}/news?category=news`)
-      .then((res) => setNews(res.data))
-      .catch((error) => console.log(error));
+      .get(`${import.meta.env.VITE_BASE_URL}/news?category=club`)
+      .then((res) => {
+        setNews(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-900 via-black to-green-800 px-4 py-20">
-      <div className="container mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-orange-900 via-black to-green-800">
+      <div className="container mx-auto py-20 px-4">
         <h1 className="text-3xl font-bold text-center text-white mb-10">
           📰 Latest Football News
         </h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8">
           {news.map((item) => (
             <div
               key={item._id}
@@ -40,11 +41,9 @@ const News = () => {
                   {item.description.slice(0, 120)}...
                 </p>
 
-                <Link to={`/news/${item._id}`}>
-                  <button className="mt-4 w-full bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg text-sm font-semibold">
-                    Read More
-                  </button>
-                </Link>
+                <button className="mt-4 bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg text-sm font-semibold">
+                  Read More
+                </button>
               </div>
             </div>
           ))}
@@ -54,4 +53,4 @@ const News = () => {
   );
 };
 
-export default News;
+export default FanMessageForClub;

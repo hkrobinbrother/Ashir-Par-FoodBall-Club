@@ -11,6 +11,11 @@ import LatestResultInput from "../Components/Dashboard/LatestResultInput";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import NewsInput from "../Components/Dashboard/NewsInput";
+import FanMessageForMatch from "../Components/Dashboard/FanMessageForMatch";
+import FanMessageForClub from "../Components/Dashboard/FanMessageForClub";
+import WorkingStage from "../Components/Common/WorkingStage/WorkingStage";
+import NewsDetail from "../Components/Common/NewsDetaills/NewsDetail";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -29,10 +34,15 @@ export const router = createBrowserRouter([
         path: "/news",
         element: <News></News>,
       },
+      {
+        path: "/news/:id",
+        element: <NewsDetail></NewsDetail>,
+      },
     ],
   },
   {path: "/login", element: <Login></Login>},
   {path: "/register", element: <Register></Register>},
+  {path:"/workingStage", element:<WorkingStage></WorkingStage>},
   {
     path: "/dashboard",
     element: <DashboardLayOut></DashboardLayOut>,
@@ -52,6 +62,14 @@ export const router = createBrowserRouter([
       {
         path: "news",
         element: <NewsInput></NewsInput>,
+      },
+      {
+        path: "fanmessage",
+        element: <FanMessageForMatch></FanMessageForMatch>,
+      },
+      {
+        path: "fanmessageForClub",
+        element: <FanMessageForClub></FanMessageForClub>,
       },
     ],
   },

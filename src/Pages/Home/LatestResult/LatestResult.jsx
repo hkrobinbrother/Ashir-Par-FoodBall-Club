@@ -3,11 +3,12 @@ import { useContext } from "react";
 
 import Match from "../../../Components/Common/Match/Match";
 import { MatchesContext } from "../../../Context/Matches";
+import LoadingSpinner from "../../../Components/Sheared/LoadingSpinner";
 
 const LatestResult = () => {
   const { scores, loading } = useContext(MatchesContext);
 
-  if (loading) return <p className="text-center mt-6">Loading...</p>;
+  if (loading) return <LoadingSpinner />;
 
   // Get the latest match
   const score = [...scores].sort(
@@ -17,7 +18,7 @@ const LatestResult = () => {
   if (!score) return <p className="text-center mt-6">No matches found</p>;
 
   return (
-    <div className="text-smn px-2 md:container mx-auto mt-14  ">
+    <div className="text-sm px-2 md:container mx-auto mt-14  ">
       <h1 className="text-2xl text-center font-extrabold mb-6 text-red-500">
         Latest Result
       </h1>

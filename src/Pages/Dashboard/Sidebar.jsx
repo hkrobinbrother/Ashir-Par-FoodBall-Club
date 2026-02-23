@@ -57,6 +57,20 @@ const Sidebar = () => {
           >
             News Update
           </Link>
+          <Link
+            to="/dashboard/fanmessage"
+            onClick={() => setIsOpen(false)}
+            className="block px-4 py-2 bg-blue-50 rounded-lg hover:bg-orange-300 transition"
+          >
+            Fans’ Message for the Match
+          </Link>
+          <Link
+            to="/dashboard/fanmessageForClub"
+            onClick={() => setIsOpen(false)}
+            className="block px-4 py-2 bg-blue-50 rounded-lg hover:bg-orange-300 transition"
+          >
+            Fans’ Message for the Club
+          </Link>
         </nav>
       </div>
     </>
