@@ -15,6 +15,7 @@ import FanMessageForMatch from "../Components/Dashboard/FanMessageForMatch";
 import FanMessageForClub from "../Components/Dashboard/FanMessageForClub";
 import WorkingStage from "../Components/Common/WorkingStage/WorkingStage";
 import NewsDetail from "../Components/Common/NewsDetaills/NewsDetail";
+import Profile from "../Pages/Dashboard/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ export const router = createBrowserRouter([
       {
         path: "fanmessageForClub",
         element: <FanMessageForClub></FanMessageForClub>,
+      },
+      {
+        path: "profile",
+        element: <Profile></Profile>,
       },
     ],
   },

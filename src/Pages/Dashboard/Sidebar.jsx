@@ -1,10 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import logo from "../../assets/apfc.png";
 import { Link } from "react-router";
 import { GrMenu } from "react-icons/gr";
+import { FaUserCircle } from "react-icons/fa";
+import { AuthContext } from "../../Context/AuthProvider";
+import axios from "axios";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user } = useContext(AuthContext); // Firebase user
+  const [dbUser, setDbUser] = useState(null); // DB user to get role
+
+  // fetch DB user based on email
+  useEffect(() => {
+    if (user?.email) {
+      axios
+        .get(`${import.meta.env.VITE_BASE_URL}/users/${user.email}`, {
+          withCredentials: true,
+        })
+        .then((res) => setDbUser(res.data))
+        .catch((err) => console.log(err));
+    }
+  }, [user]);
 
   return (
     <>
@@ -34,43 +51,84 @@ const Sidebar = () => {
         </div>
 
         {/* Nav */}
-        <nav className="mt-8 space-y-2">
-          <Link
-            to="/dashboard/latest-result"
-            onClick={() => setIsOpen(false)}
-            className="block px-4 py-2 bg-blue-50 rounded-lg hover:bg-orange-300 transition"
-          >
-            Latest Result Update
-          </Link>
+        <nav className="mt-8 flex flex-col justify-between h-full">
+          <div className="space-y-2">
+            {/* Conditional links based on DB user role */}
+            {dbUser?.role === "admin" ? (
+              <>
+                <Link
+                  to="/dashboard/latest-result"
+                  onClick={() => setIsOpen(false)}
+                  className="block px-4 py-2 bg-blue-50 rounded-lg hover:bg-orange-300 transition"
+                >
+                  Latest Result Update
+                </Link>
 
-          <Link
-            to="/dashboard/next-match"
-            onClick={() => setIsOpen(false)}
-            className="block px-4 py-2 bg-blue-50 rounded-lg hover:bg-orange-300 transition"
-          >
-            Next Match Update
-          </Link>
-          <Link
-            to="/dashboard/news"
-            onClick={() => setIsOpen(false)}
-            className="block px-4 py-2 bg-blue-50 rounded-lg hover:bg-orange-300 transition"
-          >
-            News Update
-          </Link>
-          <Link
-            to="/dashboard/fanmessage"
-            onClick={() => setIsOpen(false)}
-            className="block px-4 py-2 bg-blue-50 rounded-lg hover:bg-orange-300 transition"
-          >
-            Fans’ Message for the Match
-          </Link>
-          <Link
-            to="/dashboard/fanmessageForClub"
-            onClick={() => setIsOpen(false)}
-            className="block px-4 py-2 bg-blue-50 rounded-lg hover:bg-orange-300 transition"
-          >
-            Fans’ Message for the Club
-          </Link>
+                <Link
+                  to="/dashboard/next-match"
+                  onClick={() => setIsOpen(false)}
+                  className="block px-4 py-2 bg-blue-50 rounded-lg hover:bg-orange-300 transition"
+                >
+                  Next Match Update
+                </Link>
+
+                <Link
+                  to="/dashboard/news"
+                  onClick={() => setIsOpen(false)}
+                  className="block px-4 py-2 bg-blue-50 rounded-lg hover:bg-orange-300 transition"
+                >
+                  News Update
+                </Link>
+
+                <Link
+                  to="/dashboard/fanmessage"
+                  onClick={() => setIsOpen(false)}
+                  className="block px-4 py-2 bg-blue-50 rounded-lg hover:bg-orange-300 transition"
+                >
+                  Fans’ Message for the Match
+                </Link>
+
+                <Link
+                  to="/dashboard/fanmessageForClub"
+                  onClick={() => setIsOpen(false)}
+                  className="block px-4 py-2 bg-blue-50 rounded-lg hover:bg-orange-300 transition"
+                >
+                  Fans’ Message for the Club
+                </Link>
+              </>
+            ) : (
+              <>
+                {/* Normal user sees only fan messages */}
+                <Link
+                  to="/dashboard/fanmessage"
+                  onClick={() => setIsOpen(false)}
+                  className="block px-4 py-2 bg-blue-50 rounded-lg hover:bg-orange-300 transition"
+                >
+                  Fans’ Message for the Match
+                </Link>
+
+                <Link
+                  to="/dashboard/fanmessageForClub"
+                  onClick={() => setIsOpen(false)}
+                  className="block px-4 py-2 bg-blue-50 rounded-lg hover:bg-orange-300 transition"
+                >
+                  Fans’ Message for the Club
+                </Link>
+              </>
+            )}
+          </div>
+
+          <div className="mt-72">
+            <Link
+              to="/dashboard/profile"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center px-4 py-2 bg-white shadow-md rounded-xl hover:bg-orange-300 transition transform hover:scale-105"
+            >
+              <FaUserCircle className="text-2xl text-blue-500 mr-3" />
+              <span className="font-semibold text-gray-700">Profile</span>
+            </Link>
+          </div>
+          <div></div>
         </nav>
       </div>
     </>

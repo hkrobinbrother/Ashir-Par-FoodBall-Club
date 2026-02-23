@@ -26,12 +26,7 @@ const WorkingStage = () => {
         >
           Go Home
         </a>
-        <a
-          href="/contact"
-          className="px-6 py-3 bg-transparent border border-white font-semibold rounded-lg hover:bg-white hover:text-blue-800 transition text-center"
-        >
-          Contact Us
-        </a>
+       
       </div>
     </div>
   );

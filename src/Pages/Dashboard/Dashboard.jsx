@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 
 
 const Dashboard = () => {
@@ -16,7 +17,10 @@ const Dashboard = () => {
       <p className="mb-5">
         Welcome to the Ashir Par Football Club Dashboard! Here you can manage your team, view player stats, and stay updated with the latest news. Whether you're a coach, player, or fan, this is your hub for all things Ashir Par FC. Let's kick off the season with passion and teamwork!
       </p>
-      <button className="btn btn-primary">Get Started</button>
+     <Link to="/workingStage">
+     
+      <button className="btn btn-primary">See More</button>
+     </Link>
     </div>
   </div>
 </div>
