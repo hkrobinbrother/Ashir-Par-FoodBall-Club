@@ -19,7 +19,7 @@ const LatestResult = () => {
 
   return (
     <div className="text-sm px-2 md:container mx-auto mt-14  ">
-      <h1 className="text-2xl text-center font-extrabold mb-6 text-red-500">
+      <h1 className="text-2xl text-center font-extrabold mb-6 text-red-500 md:text-3xl">
         Latest Result
       </h1>
 

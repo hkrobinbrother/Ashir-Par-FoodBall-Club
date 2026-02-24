@@ -18,7 +18,7 @@ const AllPlayers = ({ player }) => {
 
           {/* Text section */}
           <div className="text-center mt-4">
-            <h1 className="text-lg font-bold uppercase">{player.name}</h1>
+            <h1 className="text-lg font-bold uppercase text-white">{player.name}</h1>
             <p className="text-gray-500">{player.role}</p>
           </div>
         </div>

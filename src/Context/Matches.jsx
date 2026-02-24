@@ -10,7 +10,7 @@ export const MatchesProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
+    axios 
       .get(`${import.meta.env.VITE_BASE_URL}/scores`)
       .then((res) => {
         setScores(res.data);

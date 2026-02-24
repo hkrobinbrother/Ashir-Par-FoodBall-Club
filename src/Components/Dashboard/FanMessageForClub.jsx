@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router";
+
 const FanMessageForClub = () => {
        const [news, setNews] = useState([]);
 
@@ -17,7 +19,7 @@ const FanMessageForClub = () => {
     <div className="min-h-screen bg-gradient-to-br from-orange-900 via-black to-green-800">
       <div className="container mx-auto py-20 px-4">
         <h1 className="text-3xl font-bold text-center text-white mb-10">
-          📰 Latest Football News
+        📰 Fan's Message For The Club
         </h1>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -41,9 +43,11 @@ const FanMessageForClub = () => {
                   {item.description.slice(0, 120)}...
                 </p>
 
+                <Link to="/workingStage">
                 <button className="mt-4 bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg text-sm font-semibold">
                   Read More
                 </button>
+                </Link>
               </div>
             </div>
           ))}

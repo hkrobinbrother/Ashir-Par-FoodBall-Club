@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router";
 
 const LatestNews = () => {
   const [news, setNews] = useState([]);
@@ -46,6 +47,11 @@ const LatestNews = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="mt-4 text-center">
+      <Link to="/news">
+        <button className="btn bg-amber-300">See More News</button>
+      </Link>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ const NextMatchInput = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -17,6 +18,7 @@ const NextMatchInput = () => {
       });
       toast.success("Match data submitted successfully!");
       console.log(response.data);
+      reset()
     } catch (error) {
       toast.error("Match data not submitting .");
       console.error("Error submitting match:", error);

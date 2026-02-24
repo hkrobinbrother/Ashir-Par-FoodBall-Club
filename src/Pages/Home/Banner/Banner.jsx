@@ -6,6 +6,7 @@ import img5 from "../../../../public/b5.png";
 
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Link } from "react-router";
 
 const Banner = () => {
   return (
@@ -43,9 +44,11 @@ const Banner = () => {
               <p className="text-sm md:text-lg mb-6 max-w-xl">
                 Experience the thrill of the game and support your favorite team.
               </p>
+              <Link to="/dashboard">
               <button className="hidden md:block bg-green-600 hover:bg-green-500 px-6 py-2 rounded-lg font-semibold transition">
                 Explore Now
               </button>
+              </Link>
             </div>
           </div>
         ))}

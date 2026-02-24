@@ -7,6 +7,7 @@ const LatestResultInput = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -20,6 +21,8 @@ const LatestResultInput = () => {
 
       toast.success("Latest result submitted successfully!");
       console.log(response.data);
+      reset()
+     
     } catch (error) {
       toast.error("Result not submitting.");
       console.error(error);

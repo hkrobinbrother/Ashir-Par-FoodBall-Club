@@ -16,65 +16,44 @@ import FanMessageForClub from "../Components/Dashboard/FanMessageForClub";
 import WorkingStage from "../Components/Common/WorkingStage/WorkingStage";
 import NewsDetail from "../Components/Common/NewsDetaills/NewsDetail";
 import Profile from "../Pages/Dashboard/Profile";
+import PrivateRoute from "./PrivateRoute";
+import PlayerInput from "../Components/Dashboard/PlayersInput";
+
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayOut></MainLayOut>,
+    element: <MainLayOut />,
     children: [
-      { path: "/", element: <Home></Home> },
-      {
-        path: "/players",
-        element: <Players></Players>,
-      },
-      {
-        path: "/matches",
-        element: <Matches></Matches>,
-      },
-      {
-        path: "/news",
-        element: <News></News>,
-      },
-      {
-        path: "/news/:id",
-        element: <NewsDetail></NewsDetail>,
-      },
+      { path: "/", element: <Home /> },
+      { path: "/players", element: 
+        <Players /> 
+     },
+      { path: "/matches", element: <Matches /> },
+      { path: "/news", element: <News /> },
+      { path: "/news/:id", element: <NewsDetail /> },
     ],
   },
-  {path: "/login", element: <Login></Login>},
-  {path: "/register", element: <Register></Register>},
-  {path:"/workingStage", element:<WorkingStage></WorkingStage>},
+  { path: "/login", element: <Login /> },
+  { path: "/register", element: <Register /> },
+  { path: "/workingStage", element: <WorkingStage /> },
   {
     path: "/dashboard",
-    element: <DashboardLayOut></DashboardLayOut>,
+    element: <PrivateRoute />, 
     children: [
+      
       {
-        index: true,
-        element: (<Dashboard></Dashboard>),
-      },
-      {
-        path: "next-match",
-        element: <NextMatchInput></NextMatchInput>,
-      },
-      {
-        path: "latest-result",
-        element: <LatestResultInput></LatestResultInput>,
-      },
-      {
-        path: "news",
-        element: <NewsInput></NewsInput>,
-      },
-      {
-        path: "fanmessage",
-        element: <FanMessageForMatch></FanMessageForMatch>,
-      },
-      {
-        path: "fanmessageForClub",
-        element: <FanMessageForClub></FanMessageForClub>,
-      },
-      {
-        path: "profile",
-        element: <Profile></Profile>,
+        element: <DashboardLayOut />, 
+        children: [
+          { index: true, element: <Dashboard /> },
+          { path: "next-match", element: <NextMatchInput /> },
+          { path: "latest-result", element: <LatestResultInput /> },
+          { path: "news", element: <NewsInput /> },
+          { path: "fanmessage", element: <FanMessageForMatch /> },
+          { path: "fanmessageForClub", element: <FanMessageForClub /> },
+          { path: "profile", element: <Profile /> },
+          { path: "players", element: <PlayerInput/> },
+        ],
       },
     ],
   },

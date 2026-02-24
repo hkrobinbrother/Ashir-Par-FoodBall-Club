@@ -65,6 +65,7 @@ const Match = ({ score }) => {
         <div className="text-center text-xs sm:text-sm text-gray-400 mt-6">
           📅 {date} · ⏰ {time}
         </div>
+       
 
       </div>
     </div>

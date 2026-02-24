@@ -5,7 +5,7 @@ const Hero = () => {
   const [showMore, setShowMore] = useState(false);
 
   const fullText =
-    "Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi. This football club was founded with passion and dedication, aiming to develop young talents and compete at the highest level.";
+    "Ashir Par Football Club was established to inspire young talents, promote sportsmanship, and create a strong football culture in our community. The club was founded with the vision of providing a platform where passionate players can develop their skills, build teamwork, and represent our area with pride. This website was created to share club updates, match results, achievements, and to connect supporters with our football journey. Together, we aim to grow, compete, and achieve success both on and off the field. ⚽🔥";
 
   const shortText = fullText.slice(0, 120);
 

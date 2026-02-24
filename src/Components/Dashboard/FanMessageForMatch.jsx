@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router";
 const FanMessageForMatch = () => {
-      const [news, setNews] = useState([]);
+  const [news, setNews] = useState([]);
 
   useEffect(() => {
     axios
@@ -13,11 +14,11 @@ const FanMessageForMatch = () => {
         console.log(error);
       });
   }, []);
-    return (
-        <div className="min-h-screen bg-gradient-to-br from-orange-900 via-black to-green-800">
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-orange-900 via-black to-green-800">
       <div className="container mx-auto py-20 px-4">
         <h1 className="text-3xl font-bold text-center text-white mb-10">
-          📰 Latest Football News
+        📰  Fan's Message For The Match
         </h1>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -41,16 +42,18 @@ const FanMessageForMatch = () => {
                   {item.description.slice(0, 120)}...
                 </p>
 
-                <button className="mt-4 bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg text-sm font-semibold">
-                  Read More
-                </button>
+                <Link to="/workingStage">
+                  <button className="mt-4 bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg text-sm font-semibold">
+                    Read More
+                  </button>
+                </Link>
               </div>
             </div>
           ))}
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default FanMessageForMatch;
