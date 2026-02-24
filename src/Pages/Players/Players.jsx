@@ -6,7 +6,7 @@ const Players = () => {
   const [players, setPlayers] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/players")
+      .get(`${import.meta.env.VITE_BASE_URL}/players`)
       .then((response) => {
         setPlayers(response.data);
       })
