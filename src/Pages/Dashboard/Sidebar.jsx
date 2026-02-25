@@ -153,7 +153,7 @@ const Sidebar = () => {
           </div>
 
           {/* Profile */}
-          <div className="mt-74">
+          <div className="">
             <Link
               to="/dashboard/profile"
               onClick={() => setIsOpen(false)}
