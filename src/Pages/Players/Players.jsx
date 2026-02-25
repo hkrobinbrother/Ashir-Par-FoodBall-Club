@@ -13,6 +13,7 @@ const Players = () => {
       .catch((error) => {
         console.error("Error fetching players:", error);
       });
+      
   }, []);
 
   return (
