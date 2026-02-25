@@ -153,7 +153,7 @@ const Sidebar = () => {
           </div>
 
           {/* Profile */}
-          <div className="mt-8">
+          <div className="mt-74">
             <Link
               to="/dashboard/profile"
               onClick={() => setIsOpen(false)}
@@ -163,6 +163,7 @@ const Sidebar = () => {
               Profile
             </Link>
           </div>
+          <div></div>
         </nav>
       </div>
     </>
