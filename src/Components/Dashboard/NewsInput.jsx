@@ -1,24 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { imagUpload } from "../../Api/utils";
 
 const NewsInput = () => {
   const { register, handleSubmit, reset } = useForm();
+  const [uploading, setUploading] = useState(false);
 
   const onSubmit = async (data) => {
     try {
+      setUploading(true);
+
+      // 🔹 Get selected image file
+      const imageFile = data.image[0];
+
+      // 🔹 Upload to ImageBB
+      const imageUrl = await imagUpload(imageFile);
+
+      // 🔹 Prepare news data
+      const newsData = {
+        title: data.title,
+        category: data.category,
+        description: data.description,
+        image: imageUrl,
+        createdAt: new Date(),
+      };
+
+      // 🔹 Send to backend
       const res = await axios.post(
         `${import.meta.env.VITE_BASE_URL}/news`,
-        data
+        newsData,
+        { withCredentials: true }
       );
+
       if (res.data.insertedId) {
         toast.success("News Added Successfully ⚽");
         reset();
       }
+
     } catch (error) {
       console.log(error);
       toast.error("Failed to Add ❌");
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -56,13 +81,14 @@ const NewsInput = () => {
             </select>
           </div>
 
-          {/* Image */}
+          {/* Image Upload */}
           <div>
-            <label className="text-green-300 text-sm">Image URL</label>
+            <label className="text-green-300 text-sm">News Image</label>
             <input
-              {...register("image")}
-              placeholder="Paste Image URL"
-              className="w-full mt-1 p-3 bg-gray-900 border border-green-500/40 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+              type="file"
+              accept="image/*"
+              {...register("image", { required: true })}
+              className="w-full mt-1 p-3 bg-gray-900 border border-green-500/40 rounded-lg text-white"
             />
           </div>
 
@@ -80,9 +106,14 @@ const NewsInput = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-green-500 to-green-700 hover:scale-105 transform transition duration-300 text-white font-semibold py-3 rounded-lg shadow-lg"
+            disabled={uploading}
+            className={`w-full font-semibold py-3 rounded-lg shadow-lg transition duration-300 ${
+              uploading
+                ? "bg-gray-500 cursor-not-allowed text-white"
+                : "bg-gradient-to-r from-green-500 to-green-700 hover:scale-105 text-white"
+            }`}
           >
-            🚀 Publish News
+            {uploading ? "Uploading..." : "🚀 Publish News"}
           </button>
 
         </form>
